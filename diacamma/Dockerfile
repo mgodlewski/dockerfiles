@@ -1,4 +1,4 @@
-from debian:jessie
+from debian:stretch
 
 RUN apt-get update && apt-get install curl -y
 RUN curl -o /tmp/Diacamma_setup.tar.gz http://www.sd-libre.fr/download/Diacamma_setup.tar.gz
