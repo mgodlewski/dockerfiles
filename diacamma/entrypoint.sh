@@ -9,7 +9,15 @@ echo Type: $diacamma_type
 
 if [ ! -f /var/lucterios2/$organisation/settings.py ]
 then
-  /var/lucterios2/launch_lucterios.sh add -n $organisation -m "lucterios.contacts,lucterios.documents,lucterios.mailing,diacamma.condominium,diacamma.accounting,diacamma.payoff" -p diacamma.$diacamma_type
+  case "$diacamma_type" in
+    asso)
+      modules="lucterios.contacts,lucterios.documents,lucterios.mailing,diacamma.accounting,diacamma.payoff,diacamma.event,diacamma.member,diacamma.invoice"
+      break;
+    syndic)
+      modules="lucterios.contacts,lucterios.documents,lucterios.mailing,diacamma.accounting,diacamma.payoff,diacamma.condominium"
+      break;
+  esac
+  /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type
 fi
 
 export DJANGO_SETTINGS_MODULE="${organisation}.settings"
