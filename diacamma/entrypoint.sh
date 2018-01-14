@@ -16,6 +16,10 @@ then
     syndic)
       modules="lucterios.contacts,lucterios.documents,lucterios.mailing,diacamma.accounting,diacamma.payoff,diacamma.condominium"
       ;;
+    *)
+      echo 'Missing type, please set "asso" or "syndic"'
+      exit 1
+      ;;
   esac
   /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type
 fi
