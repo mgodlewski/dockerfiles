@@ -24,6 +24,8 @@ then
   /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type
 fi
 
+cd /var/lucterios2
+source virtual_for_lucterios/bin/activate
 export DJANGO_SETTINGS_MODULE="${organisation}.settings"
-exec /var/lucterios2/virtual_for_lucterios/bin/python3 /var/lucterios2/manage_any.py runserver --noreload --traceback 0.0.0.0:8100
+exec gunicorn lucterios.framework.wsgi --bind=0.0.0.0:8100 --access-logfile - --error-logfile -
 
