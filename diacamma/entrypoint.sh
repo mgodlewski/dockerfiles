@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-organisation=$1
-diacamma_type=$2
+organisation=${DIACAMMA_ORGANISATION:-asso}
+diacamma_type=${DIACAMMA_TYPE:-asso}
+diacamma_database=${DIACAMMA_DATABASE}
 
 echo Organisation: $organisation
 echo Type: $diacamma_type
@@ -21,7 +22,15 @@ then
       exit 1
       ;;
   esac
-  /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type
+  database_parameter=""
+  [ "$diacamma_database" != "" ) && database_parameter="-d $diacamma_database"
+  /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type $database_parameter
+
+  cat <<EOF >> /var/lucterios2/$organisation/settings.py
+LANGUAGE_CODE = 'fr'
+ALLOWED_HOSTS = ["*"]
+EOF
+
 fi
 
 cd /var/lucterios2
