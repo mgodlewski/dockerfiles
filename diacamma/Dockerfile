@@ -6,6 +6,6 @@ RUN cd /tmp && tar zxvf /tmp/Diacamma_setup.tar.gz
 RUN /tmp/Diacamma/install.sh
 RUN cd /var/lucterios2 \
     && . virtual_for_lucterios/bin/activate \
-    && pip install gunicorn
+    && pip install gunicorn psycopg2-binary
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
