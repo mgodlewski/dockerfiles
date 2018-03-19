@@ -23,7 +23,7 @@ then
       ;;
   esac
   database_parameter=""
-  [ "$diacamma_database" != "" ) && database_parameter="-d $diacamma_database"
+  [ "$diacamma_database" != "" ] && database_parameter="-d $diacamma_database"
   /var/lucterios2/launch_lucterios.sh add -n $organisation -m "$modules" -p diacamma.$diacamma_type $database_parameter
 
   cat <<EOF >> /var/lucterios2/$organisation/settings.py
