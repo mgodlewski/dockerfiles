@@ -6,7 +6,7 @@ RUN cd /tmp && tar zxvf /tmp/Diacamma_setup.tar.gz
 RUN /tmp/Diacamma/install.sh
 RUN cd /var/lucterios2 \
     && . virtual_for_lucterios/bin/activate \
-    && pip install gunicorn psycopg2-binary
+    && pip install gunicorn psycopg2-binary mysqlclient
 RUN apt-get install -y locales locales-all
 RUN locale-gen fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
