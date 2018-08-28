@@ -3,7 +3,7 @@ FROM debian:stretch
 RUN apt-get update && \
     apt-get install -y \
         curl \
-	default-libmysqlclient-dev \
+        default-libmysqlclient-dev \
         locales \
         locales-all && \
     rm -rf /var/lib/apt/lists/*
