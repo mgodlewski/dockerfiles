@@ -1,0 +1,27 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+build-diacamma:
+  stage: build
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" diacamma
+    - docker run --rm --entrypoint /getCurrentVersion.sh "$CI_REGISTRY_IMAGE:latest"
+  except:
+    - master
+
+build-diacamma-master:
+  stage: build
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" diacamma
+    - DIACAMMA_VERSION=$(docker run --rm --entrypoint /getCurrentVersion.sh "$CI_REGISTRY_IMAGE:latest")
+    - docker tag "$CI_REGISTRY_IMAGE:latest" "$CI_REGISTRY_IMAGE:$DIACAMMA_VERSION"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
+    - docker push "$CI_REGISTRY_IMAGE:$DIACAMMA_VERSION"
+  only:
+    - master
+
