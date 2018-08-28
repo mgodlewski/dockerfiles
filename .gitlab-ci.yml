@@ -10,7 +10,7 @@ build-diacamma-master:
   stage: build
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" diacamma
-    - DIACAMMA_VERSION=$(docker run --rm -it --entrypoint /getCurrentVersion.sh "$CI_REGISTRY_IMAGE:latest")
+    - DIACAMMA_VERSION=$(docker run --rm --entrypoint /getCurrentVersion.sh "$CI_REGISTRY_IMAGE:latest")
     - docker tag "$CI_REGISTRY_IMAGE:latest" "$CI_REGISTRY_IMAGE:$DIACAMMA_VERSION"
     - docker push "$CI_REGISTRY_IMAGE:latest"
     - docker push "$CI_REGISTRY_IMAGE:$DIACAMMA_VERSION"
