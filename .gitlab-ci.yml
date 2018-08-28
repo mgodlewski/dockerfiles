@@ -1,5 +1,3 @@
-# This file is a template, and might need editing before it works on your project.
-# Official docker image.
 image: docker:latest
 
 services:
@@ -8,10 +6,10 @@ services:
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
-build-master:
+build-diacamma-master:
   stage: build
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" diacamma
     - DIACAMMA_VERSION=$(docker run --rm -it --entrypoint /getCurrentVersion.sh "$CI_REGISTRY_IMAGE:latest")
     - docker tag "$CI_REGISTRY_IMAGE:latest" "$CI_REGISTRY_IMAGE:$DIACAMMA_VERSION"
     - docker push "$CI_REGISTRY_IMAGE:latest"
