@@ -3,7 +3,7 @@
 function run {
     pushd /var/lucterios2 > /dev/null
     filename="/backups/${1}"
-    if [ ! -f ${filename} ]
+    if [ -f ${filename} ]
     then
         /bin/bash launch_lucterios.sh archive --name=${CURRENT_ORGANISATION} --file=${filename}
     else

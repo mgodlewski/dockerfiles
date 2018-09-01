@@ -63,6 +63,8 @@ function run {
     source virtual_for_lucterios/bin/activate
     export DJANGO_SETTINGS_MODULE="${CURRENT_ORGANISATION}.settings"
 
+    init_database
+
     exec gunicorn lucterios.framework.wsgi --bind=0.0.0.0:8100 --access-logfile - --error-logfile -
     popd > /dev/null
 }
