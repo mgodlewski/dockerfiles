@@ -29,6 +29,9 @@ RUN cd /var/lucterios2 && \
     . virtual_for_lucterios/bin/activate && \
     pip install gunicorn psycopg2-binary mysqlclient
 
-COPY entrypoint.sh /
-COPY getCurrentVersion.sh /
-ENTRYPOINT ["/entrypoint.sh"]
+COPY entrypoint.d/ /entrypoint.d/
+
+VOLUME [ "/backups" ]
+
+ENTRYPOINT [ "/entrypoint.d/entrypoint.sh" ]
+CMD [ "run" ]
