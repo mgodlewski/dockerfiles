@@ -10,6 +10,22 @@ Here are environment possible values
 | DIACAMMA_ORGANISATION | any string (no space allowed) | N/A                  | name for your Diacamma instance                                 |
 | DIACAMMA_DATABASE     | Refer to Database Section     | SQLite used if empty | connection string to the database used by DIACAMMA |
 
+## Building with sticked version
+
+You can build an image with forced version of each component.
+| Component         | default constaint | package                                              |
+|:------------------|:------------------|:-----------------------------------------------------|
+|diacamma-asso      | empty (latest)    | https://pypi.org/project/diacamma-asso/#history      |
+|diacamma-syndic    | empty (latest)    | https://pypi.org/project/diacamma-syndic/#history    |
+|lucterios-standard | empty (latest)    | https://pypi.org/project/lucterios-standard/#history |
+
+Constraint have to be compatible with pip install syntax (refer to https://www.python.org/dev/peps/pep-0440/#version-specifiers for more infos)
+
+### Example
+```bash
+docker build -e ASSO_VERSION_CONSTRAINT="==2.3.0.18070322" -e SYNDIC_VERSION_CONSTRAINT="==2.3.0.18073020" LUCTERIOS_VERSION_CONSTRAINT="==2.3.0.18070322" .
+```
+
 ## Databases
 
 ### Use SQLite Database
