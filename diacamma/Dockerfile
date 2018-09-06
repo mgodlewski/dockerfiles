@@ -41,7 +41,5 @@ RUN chmod +x /entrypoint.d/entrypoint.sh \
 
 VOLUME [ "/backups" ]
 
-
-
 ENTRYPOINT [ "/entrypoint.d/entrypoint.sh" ]
 CMD [ "run" ]
