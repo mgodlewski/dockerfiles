@@ -18,10 +18,10 @@ ENV ASSO_VERSION_CONSTRAINT=""
 ENV SYNDIC_VERSION_CONSTRAINT=""
 ENV LUCTERIOS_VERSION_CONSTRAINT=""
 
-RUN curl --location -o /tmp/Diacamma_setup.tar.gz http://www.sd-libre.fr/download/Diacamma_setup.tar.gz
-RUN cd /tmp && tar zxvf /tmp/Diacamma_setup.tar.gz
-
-RUN apt-get update && \
+RUN curl --location -o /tmp/Diacamma_setup.tar.gz http://www.sd-libre.fr/download/Diacamma_setup.tar.gz && \
+    cd /tmp && \
+    tar zxvf /tmp/Diacamma_setup.tar.gz && \
+    apt-get update && \
     /tmp/Diacamma/install.sh -p "diacamma-asso${ASSO_VERSION_CONSTRAINT} diacamma-syndic${SYNDIC_VERSION_CONSTRAINT} lucterios-standard${LUCTERIOS_VERSION_CONSTRAINT}" && \
     rm -rf /var/lib/apt/lists/*
 
@@ -32,3 +32,4 @@ RUN cd /var/lucterios2 && \
 COPY entrypoint.sh /
 COPY getCurrentVersion.sh /
 ENTRYPOINT ["/entrypoint.sh"]
+
