@@ -1,6 +1,6 @@
 # qpdf
 
-(QPDF)[http://qpdf.sourceforge.net/] is a command-line program that does structural, content-preserving transformations on PDF files. 
+[QPDF](http://qpdf.sourceforge.net/) is a command-line program that does structural, content-preserving transformations on PDF files. 
 
 Usage:
 
