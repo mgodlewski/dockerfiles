@@ -9,7 +9,7 @@ version: '3.1'
 
 services:
 
-  amapj:
+  amapress:
     image: mgodlewski/amapress
     restart: always
     ports:
