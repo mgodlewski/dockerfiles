@@ -22,11 +22,11 @@ It's strongly recommended to map those path onto your host.
 ## Building with sticked version
 
 You can build an image with forced version of each component.
-| Component         | default constaint | package                                              |
-|:------------------|:------------------|:-----------------------------------------------------|
-|diacamma-asso      | empty (latest)    | https://pypi.org/project/diacamma-asso/#history      |
-|diacamma-syndic    | empty (latest)    | https://pypi.org/project/diacamma-syndic/#history    |
-|lucterios-standard | empty (latest)    | https://pypi.org/project/lucterios-standard/#history |
+| Component          | default constaint | package                                              |
+|:-------------------|:------------------|:-----------------------------------------------------|
+| diacamma-asso      | empty (latest)    | https://pypi.org/project/diacamma-asso/#history      |
+| diacamma-syndic    | empty (latest)    | https://pypi.org/project/diacamma-syndic/#history    |
+| lucterios-standard | empty (latest)    | https://pypi.org/project/lucterios-standard/#history |
 
 Constraint have to be compatible with pip install syntax (refer to https://www.python.org/dev/peps/pep-0440/#version-specifiers for more infos)
 
@@ -43,7 +43,7 @@ This is the default behaviour for Diacamma
 organisation=your_syndic
 mkdir $organisation
 docker run -v $(pwd)/${organisation}:/var/lucterios2/${organisation} \
-       -v $(pwd)/backups:/backups
+       -v $(pwd)/backups:/backups \
        -e DIACAMMA_TYPE=syndic \
        -e DIACAMMA_ORGANISATION=$organisation \
        -p 8100:8100 \
@@ -56,7 +56,7 @@ docker run -v $(pwd)/${organisation}:/var/lucterios2/${organisation} \
 organisation=your_syndic
 mkdir $organisation
 docker run -v $(pwd)/${organisation}:/var/lucterios2/${organisation} \
-       -v $(pwd)/backups:/backups
+       -v $(pwd)/backups:/backups \
        -e DIACAMMA_TYPE=syndic \
        -e DIACAMMA_ORGANISATION=$organisation \
        -e DIACAMMA_DATABASE="PostGreSQL:name=<dbname>,user=<dbuser>,password=<dbpass>,host=<dbhost>" \
@@ -70,7 +70,7 @@ docker run -v $(pwd)/${organisation}:/var/lucterios2/${organisation} \
 organisation=your_syndic
 mkdir $organisation
 docker run -v $(pwd)/${organisation}:/var/lucterios2/${organisation} \
-        -v $(pwd)/backups:/backups
+       -v $(pwd)/backups:/backups \
        -e DIACAMMA_TYPE=syndic \
        -e DIACAMMA_ORGANISATION=$organisation \
        -e DIACAMMA_DATABASE="MySQL:name=<dbname>,user=<dbuser>,password=<dbpass>,host=<dbhost>" \
