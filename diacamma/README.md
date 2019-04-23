@@ -22,6 +22,7 @@ It's strongly recommended to map those path onto your host.
 ## Building with sticked version
 
 You can build an image with forced version of each component.
+
 | Component          | default constaint | package                                              |
 |:-------------------|:------------------|:-----------------------------------------------------|
 | diacamma-asso      | empty (latest)    | https://pypi.org/project/diacamma-asso/#history      |
