@@ -5,7 +5,8 @@ RUN apt-get update && \
         curl \
         default-libmysqlclient-dev \
         locales \
-        locales-all && \
+        locales-all \
+        sudo && \
     rm -rf /var/lib/apt/lists/*
 
 RUN locale-gen fr_FR.UTF-8
