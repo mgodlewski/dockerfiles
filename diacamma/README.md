@@ -5,11 +5,12 @@ http://www.diacamma.org/
 ## Environment variables
 Here are environment possible values
 
-| var                   | possible values               | default              | description                                        |
-|:----------------------|:------------------------------|:---------------------|:---------------------------------------------------|
-| DIACAMMA_TYPE         | syndic, asso                  | asso                 | run a diacamma-syndic or diacamma-asso instance    |
-| DIACAMMA_ORGANISATION | any string (no space allowed) | N/A                  | name for your Diacamma instance                                 |
-| DIACAMMA_DATABASE     | Refer to Database Section     | SQLite used if empty | connection string to the database used by DIACAMMA |
+| var                     | possible values               | default                 | description                                        |
+|:------------------------|:------------------------------|:------------------------|:---------------------------------------------------|
+| DIACAMMA_TYPE           | syndic, asso                  | asso                    | run a diacamma-syndic or diacamma-asso instance    |
+| DIACAMMA_ORGANISATION   | any string (no space allowed) | N/A                     | name for your Diacamma instance                    |
+| DIACAMMA_DATABASE       | Refer to Database Section     | SQLite used if empty    | connection string to the database used by DIACAMMA |
+| GUNICORN_EXTRA_CMD_ARGS | See [gunicorn settings](https://docs.gunicorn.org/en/stable/settings.html) | | add extra arguments to gunicorn                    |
 
 ## Data volumes exposed
 | path in containers                | role                                 |

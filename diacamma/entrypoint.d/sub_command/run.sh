@@ -65,7 +65,7 @@ function run {
 
     init_database
 
-    exec gunicorn lucterios.framework.wsgi --bind=0.0.0.0:8100 --access-logfile - --error-logfile -
+    exec gunicorn lucterios.framework.wsgi --bind=0.0.0.0:8100 --access-logfile - --error-logfile - ${GUNICORN_EXTRA_CMD_ARGS}
     popd > /dev/null
 }
 
